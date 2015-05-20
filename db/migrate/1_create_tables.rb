@@ -15,6 +15,13 @@ class CreateTables < ActiveRecord::Migration
       t.timestamps
     end
 
+    create_table :comments do |t|
+      t.string :title
+      t.integer :date
+      t.string :author
+      t.timestamps
+    end
+
   end
 
 end
