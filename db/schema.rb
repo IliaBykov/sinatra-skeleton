@@ -12,10 +12,21 @@
 
 ActiveRecord::Schema.define(version: 1) do
 
+  create_table "comments", force: true do |t|
+    t.integer  "date"
+    t.string   "username"
+    t.string   "text"
+    t.integer  "pin_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "pins", force: true do |t|
     t.string   "title"
     t.integer  "date"
-    t.string   "author"
+    t.string   "username"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
