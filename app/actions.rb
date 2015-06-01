@@ -50,3 +50,17 @@ end
 post '/profile.erb' do
   	redirect '/'
 end
+
+get '/pins/new' do
+    erb :new_pin
+end
+
+post '/new_pin.erb' do
+    title = params[:title]
+    date = params[:date]
+    username = params[:username]
+
+    pin = Pin.create(title: title, date: date, username: username)
+
+    redirect '/'
+end
