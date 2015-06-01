@@ -1,6 +1,6 @@
 # Homepage (Root path)
 get '/' do
-  erb :index #display html in /app/views/index.erb
+  	erb :index #display html in /app/views/index.erb
 end
 
 get '/login.erb' do
@@ -8,9 +8,21 @@ get '/login.erb' do
 end
 
 get '/signup.erb' do
-  erb :signup
+  	erb :signup
 end
 
 get '/profile.erb' do
     erb :profile
+end
+
+post '/login.erb' do
+  	redirect '/'
+end
+
+post '/signup.erb' do
+  	redirect '/'
+end
+
+post '/profile.erb' do
+  	redirect '/'
 end
