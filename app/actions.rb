@@ -8,24 +8,24 @@ get '/' do
   	erb :index #display html in /app/views/index.erb
 end
 
-get '/login.erb' do
+get '/login' do
     erb :login
 end
 
-get '/signup.erb' do
+get '/signup' do
   	erb :signup
 end
 
-get '/profile.erb' do
+get '/profile' do
     erb :profile
 end
 
-post '/login.erb' do
+post '/login' do
 	username = params[:username] #params[:FirstName :LastName]
   	password = params[:password]
 
   	user = User.find_by(username: username)
-  	if user.password == password
+  	if user.password = password
     	session[:user_id] = user.id
     	redirect '/'
   	else
@@ -47,7 +47,7 @@ post '/signup' do
   end
 end
 
-post '/profile.erb' do
+post '/profile' do
   	redirect '/'
 end
 
@@ -55,12 +55,38 @@ get '/pins/new' do
     erb :new_pin
 end
 
-post '/new_pin.erb' do
+#
+#post '/new_pin' do
+ #   title = params[:title]
+  #  date = params[:date]
+   # username = params[:username]
+#
+ #   pin = Pin.create(title: title, date: date, username: username)
+#
+ #   redirect '/'
+#end
+#
+
+get '/pins/:id' do
+  @pin = Pin.find(params[:id])
+  @pin.inspect
+end
+
+post '/pins/create' do
     title = params[:title]
     date = params[:date]
     username = params[:username]
 
-    pin = Pin.create(title: title, date: date, username: username)
-
-    redirect '/'
+    current_user.pins.create title: title, date: date, username: username
 end
+
+post '/pins/create' do
+    title = params[:title]
+    date = params[:date]
+    username = params[:username]
+
+    new_pin = current_user.pins.create title: title, date: date, username: username
+    redirect "/pins/#{new_pin.id}"
+end
+
+
