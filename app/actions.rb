@@ -21,7 +21,7 @@ get '/profile' do
 end
 
 post '/login' do
-	username = params[:username] #params[:FirstName :LastName]
+	username = params[:username]
   	password = params[:password]
 
   	user = User.find_by(username: username)
@@ -89,4 +89,18 @@ post '/pins/create' do
     redirect "/pins/#{new_pin.id}"
 end
 
+get '/profile/edit' do
+    current_user
+    erb :profile
+end
+
+post '/profile/edit' do
+    username = params[:username]
+    email = params[:email]
+    password = params[:password]
+
+    current_user.update username: username, email: email, password: password
+
+    redirect '/'
+end
 
