@@ -4,6 +4,10 @@ helpers do
 	end
 end
 
+before do
+  redirect '/login' if !current_user && request.path != '/login' && request.path != '/signup'
+end
+
 get '/' do
   	erb :index #display html in /app/views/index.erb
 end
@@ -103,4 +107,10 @@ post '/profile/edit' do
 
     redirect '/'
 end
+
+get '/' do
+    @pins = Pin.all.reverse
+    erb :index
+end
+
 

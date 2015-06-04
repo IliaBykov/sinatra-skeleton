@@ -82,3 +82,13 @@ a p:hover {
 	background-color: transparent;
 	color: white; 
 }
+
+#pin-container {
+    -webkit-column-count: 3;
+    -webkit-column-gap: 12px;
+}
+
+.pin {
+    margin: 10px; 
+    width: 30%;
+}
