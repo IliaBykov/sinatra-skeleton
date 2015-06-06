@@ -9,7 +9,8 @@ before do
 end
 
 get '/' do
-  	erb :index #display html in /app/views/index.erb
+    @pins = Pin.all.reverse
+    erb :index
 end
 
 get '/login' do
@@ -106,11 +107,6 @@ post '/profile/edit' do
     current_user.update username: username, email: email, password: password
 
     redirect '/'
-end
-
-get '/' do
-    @pins = Pin.all.reverse
-    erb :index
 end
 
 
